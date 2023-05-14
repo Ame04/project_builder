@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
 import argparse
+from main_folder_creation import create_main_folder
 
 def get_parser() -> argparse.ArgumentParser:
     ''' Construct and return the paser object with all the options '''
@@ -46,7 +47,12 @@ class Project():
         self.output = args.output
         if args.project_part is not None:
             self.project_part = args.project_part
-        self.repo_url = args.repo_url
+
+        if not args.interactive:
+            if args.repo_url is None:
+                raise Exception("No repo_url, if not in interactive mode an repo_url is required")
+            else:
+                self.repo_url = args.repo_url
 
 if __name__=="__main__":
     # Parse the arguments
@@ -55,5 +61,6 @@ if __name__=="__main__":
     print("Let's have a project with : " + str(args.project_part))
     if args.interactive:
         print("Script launched in interactive mode")
-
     project_opt = Project(args=args)
+    create_main_folder(project_opt=project_opt)
+
