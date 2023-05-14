@@ -4,6 +4,11 @@
 This project is made to generate a project skeleton to begin with.
 Like than, with only one command you can begin to code or design on your project without thinking about its layout.
 
+## Prerequise
+To be able to handle the cad files please follow steps from this [page](https://blog.lambda.cx/posts/freecad-and-git/)
+
+The script will search if you have the required things done if you choose to instanciate a project with a mechanical part.
+
 ## Standard layout
 Currently the layout will be the following :
 
