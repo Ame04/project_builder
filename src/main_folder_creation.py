@@ -33,3 +33,9 @@ def create_main_folder(project_opt):
         exit(1)
 
     print("Cloning the blank repository : done")
+    current_dir = os.getcwd()
+    project_name = os.listdir(current_dir)[0]
+
+    project_opt.project_path = os.path.join(current_dir, project_name, "")
+
+    print("Complete project path is : " + project_opt.project_path)

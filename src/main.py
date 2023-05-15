@@ -40,6 +40,7 @@ class Project():
     output:str=None
     project_part:list=None
     repo_url:str=None
+    project_path:str=None
 
     def __init__(self, args):
         ''' Initialyse the class with info from the arg parser '''
