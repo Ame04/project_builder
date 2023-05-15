@@ -4,24 +4,24 @@ import os
 import subprocess
 import utils
 
-def create_main_folder(project_opt):
+def create_main_folder(project:utils.Project):
     ''' Create the main folder and fill it '''
-    if project_opt.interactive:
-        project_opt.output = input("Enter the path where you want to create your project : ")
+    if project.is_interactive:
+        project.output_dir = input("Enter the path where you want to create your project : ")
 
     # Verify the path and create it if it does not exist
-    if not os.path.exists(project_opt.output):
+    if not os.path.exists(project.output_dir):
         print("The path doesn't exist, creating it ...")
-        os.makedirs(project_opt.output)
-        print("Path created : " + os.getcwd() + "/" + project_opt.output)
+        os.makedirs(project.output_dir)
+        print("Path created : " + os.getcwd() + "/" + project.output_dir)
 
-    if project_opt.interactive:
-        project_opt.repo_url = input("Enter you repo URL : ")
+    if project.is_interactive:
+        project.repo_url = input("Enter you repo URL : ")
 
-    cmd_line = "git clone " + project_opt.repo_url
+    cmd_line = "git clone " + project.repo_url
 
     print("Entering the folder and cloning the blank repository ...")
-    os.chdir(project_opt.output)
+    os.chdir(project.output_dir)
     # Clone the repository
     try:
         subprocess.run(cmd_line, shell=True, check=True,
@@ -36,6 +36,6 @@ def create_main_folder(project_opt):
     current_dir = os.getcwd()
     project_name = os.listdir(current_dir)[0]
 
-    project_opt.project_path = os.path.join(current_dir, project_name, "")
+    project.path = os.path.join(current_dir, project_name, "")
 
-    print("Complete project path is : " + project_opt.project_path)
+    print("Complete project path is : " + project.path)
