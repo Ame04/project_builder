@@ -1,0 +1,32 @@
+{
+    "project_name":{
+        "meca":{
+            "src":{
+                ".gitkeep":""
+            },
+            "stl":{
+                ".gitkeep":""
+            },
+            "Readme.md":"#This is the mecanical part of the project\nPlease add a description here"
+        },
+        "elec":{
+            "Readme.md":"#This is the electrical part of the project\nPlease add a description here"
+        },
+        "code":{
+            "src":{
+                ".gitkeep":""
+            },
+            "data":{
+                ".gitkeep":""
+            },
+            "doc":{
+                ".gitkeep":""
+            },
+            "Readme.md":"#This is the code part of the project\nPlease add a description here",
+            ".gitignore":""
+        },
+        "Readme.md":"#This is the main folder of your project\nPlease add a description here",
+        "BOM.json":"",
+        ".gitignore":""
+    }
+}
