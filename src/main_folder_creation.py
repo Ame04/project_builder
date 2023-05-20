@@ -18,11 +18,12 @@ def create_main_folder(project:utils.Project):
     if project.is_interactive:
         project.repo_url = input("Enter you repo URL : ")
 
+
+    ########### Repository clonning ###########
     cmd_line = "git clone " + project.repo_url
 
-    print("Entering the folder and cloning the blank repository ...")
+    print("Entering the folder and cloning the blank repository ... ", end="")
     os.chdir(project.output_dir)
-    # Clone the repository
     try:
         subprocess.run(cmd_line, shell=True, check=True,
                        stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -32,10 +33,14 @@ def create_main_folder(project:utils.Project):
         print(e.stderr)
         exit(1)
 
-    print("Cloning the blank repository : done")
+    print(utils.color_cyan + "DONE" + utils.color_reset)
     current_dir = os.getcwd()
     project_name = os.listdir(current_dir)[0]
 
     project.path = os.path.join(current_dir, project_name, "")
 
-    print("Complete project path is : " + project.path)
+    ########### Main folder objects creation ###########
+    print("Entering the project and creating main folder objects ... ", end="")
+    os.chdir(project.path)
+    utils.create_folder_objects(project.layout)
+    print(utils.color_cyan + "DONE" + utils.color_reset)

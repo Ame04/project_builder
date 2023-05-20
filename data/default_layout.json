@@ -1,32 +1,30 @@
 {
-    "project_name":{
-        "meca":{
-            "src":{
-                ".gitkeep":""
-            },
-            "stl":{
-                ".gitkeep":""
-            },
-            "Readme.md":"#This is the mecanical part of the project\nPlease add a description here"
+    "meca":{
+        "src":{
+            ".gitkeep":""
         },
-        "elec":{
-            "Readme.md":"#This is the electrical part of the project\nPlease add a description here"
+        "stl":{
+            ".gitkeep":""
         },
-        "code":{
-            "src":{
-                ".gitkeep":""
-            },
-            "data":{
-                ".gitkeep":""
-            },
-            "doc":{
-                ".gitkeep":""
-            },
-            "Readme.md":"#This is the code part of the project\nPlease add a description here",
-            ".gitignore":""
+        "README.md":"#This is the mecanical part of the project\nPlease add a description here"
+    },
+    "elec":{
+        "README.md":"#This is the electrical part of the project\nPlease add a description here"
+    },
+    "code":{
+        "src":{
+            ".gitkeep":""
         },
-        "Readme.md":"#This is the main folder of your project\nPlease add a description here",
-        "BOM.json":"",
+        "data":{
+            ".gitkeep":""
+        },
+        "doc":{
+            ".gitkeep":""
+        },
+        "README.md":"#This is the code part of the project\nPlease add a description here",
         ".gitignore":""
-    }
+    },
+    "README.md":"#This is the main folder of your project\nPlease add a description here",
+    "BOM.json":"",
+    ".gitignore":""
 }

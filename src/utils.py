@@ -12,8 +12,8 @@ color_blue = "\033[34m"
 color_magenta = "\033[35m"
 color_cyan = "\033[36m"
 
-FILE_PATH = os.path.abspath(__file__)
-DEFAULT_LAYOUT_PATH = FILE_PATH + "../data/default_layout.json"
+FILE_PATH = os.path.dirname(os.path.abspath(__file__))
+DEFAULT_LAYOUT_PATH = FILE_PATH + "/../data/default_layout.json"
 
 class Project():
     ''' Class to propagate informations between scripts '''
@@ -50,8 +50,18 @@ class Project():
             else:
                 self.parse_layout(layout_path)
 
-
-
     def parse_layout(self, path):
         ''' Import the layout from a given path '''
-        self.layout = json.loads(path)
+        with open(path, "r", encoding="utf-8") as layout_file:
+            self.layout = json.load(layout_file)
+
+def create_folder_objects(folder:dict):
+    ''' Takes a dict discribing a folder and creates the contained objects '''
+    for item, content in folder.items():
+        if isinstance(content, dict):
+            # Dict represent folders
+            os.makedirs(item)
+        elif isinstance(content, str):
+            # Str represent files
+            with open(item, "w", encoding="utf-8") as new_f:
+                new_f.write(content)
