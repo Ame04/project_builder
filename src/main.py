@@ -30,6 +30,10 @@ def get_parser() -> argparse.ArgumentParser:
                         choices=["meca", "elec", "code"],
                         help="The part you want to put in your project"
                         )
+    parser.add_argument("--layout_path","l",
+                        help="Path to your project layout,"
+                        " if not set the default layout will be used"
+    )
     return parser
 
 def main(args):
