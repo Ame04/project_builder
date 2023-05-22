@@ -23,6 +23,7 @@ class Project():
     repo_url:str=None
     path:str=None
     layout:dict=None
+    optionnal_folders:list=None
 
     def __init__(self, args):
         ''' Initialyse the class with info from the arg parser '''
@@ -55,10 +56,17 @@ class Project():
         with open(path, "r", encoding="utf-8") as layout_file:
             self.layout = json.load(layout_file)
 
-def create_folder_objects(folder:dict):
+    def get_optionnal_folders(self):
+        ''' Parse the layout dictionnary to get first layer folders '''
+        for item, content in self.layout.items():
+            if isinstance(content, dict):
+                # Dict represent folders
+                self.optionnal_folders.append(item)
+
+def create_folder_objects(folder:dict, create_folder:bool=True):
     ''' Takes a dict discribing a folder and creates the contained objects '''
     for item, content in folder.items():
-        if isinstance(content, dict):
+        if isinstance(content, dict) and create_folder:
             # Dict represent folders
             os.makedirs(item)
         elif isinstance(content, str):

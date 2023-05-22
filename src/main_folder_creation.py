@@ -13,6 +13,7 @@ def create_main_folder(project:utils.Project):
     if not os.path.exists(project.output_dir):
         print("The path doesn't exist, creating it ...")
         os.makedirs(project.output_dir)
+        print(utils.color_cyan + "DONE" + utils.color_reset)
         print("Path created : " + os.getcwd() + "/" + project.output_dir)
 
     if project.is_interactive:
@@ -42,5 +43,5 @@ def create_main_folder(project:utils.Project):
     ########### Main folder objects creation ###########
     print("Entering the project and creating main folder objects ... ", end="")
     os.chdir(project.path)
-    utils.create_folder_objects(project.layout)
+    utils.create_folder_objects(project.layout, create_folder=False)
     print(utils.color_cyan + "DONE" + utils.color_reset)
