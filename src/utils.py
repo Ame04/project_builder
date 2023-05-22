@@ -73,3 +73,19 @@ def create_folder_objects(folder:dict, create_folder:bool=True):
             # Str represent files
             with open(item, "w", encoding="utf-8") as new_f:
                 new_f.write(content)
+
+def print_info(msg):
+    ''' Print a message as an information '''
+    print(color_green + msg + color_reset)
+
+def print_error(msg):
+    ''' Print a message as an error '''
+    print(color_red + msg + color_reset)
+
+def print_ongoing_task(msg):
+    ''' Print a message for an ongoing task '''
+    print(msg + " ... ", end="")
+
+def print_task_done():
+    ''' Print a done in cyan '''
+    print(color_cyan + "DONE" + color_reset)
