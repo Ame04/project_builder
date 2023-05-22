@@ -51,6 +51,8 @@ class Project():
             else:
                 self.parse_layout(layout_path)
 
+        self.get_optionnal_folders()
+
     def parse_layout(self, path):
         ''' Import the layout from a given path '''
         with open(path, "r", encoding="utf-8") as layout_file:
@@ -58,11 +60,15 @@ class Project():
 
     def get_optionnal_folders(self):
         ''' Parse the layout dictionnary to get first layer folders '''
+        tmp = list()
         for item, content in self.layout.items():
             if isinstance(content, dict):
                 # Dict represent folders
-                self.optionnal_folders.append(item)
+                tmp.append(item)
+        self.optionnal_folders = tmp.copy()
 
+########### Useful functions ###########
+# TODO add a recusive option
 def create_folder_objects(folder:dict, create_folder:bool=True):
     ''' Takes a dict discribing a folder and creates the contained objects '''
     for item, content in folder.items():

@@ -2,6 +2,7 @@
 
 import argparse
 from main_folder_creation import create_main_folder
+from optional_folders_creation import create_optional_folder
 import utils
 
 def get_parser() -> argparse.ArgumentParser:
@@ -31,7 +32,7 @@ def get_parser() -> argparse.ArgumentParser:
                         )
     parser.add_argument("--project_part", "-p",
                         nargs="*",
-                        choices=["meca", "elec", "code"],
+                        default=["meca", "elec", "code"],
                         help="The part you want to put in your project"
                         )
 
@@ -49,4 +50,5 @@ if __name__=="__main__":
         print("Script launched in interactive mode")
     project = utils.Project(args=args)
     create_main_folder(project=project)
+    create_optional_folder(project=project)
 

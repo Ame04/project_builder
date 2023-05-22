@@ -11,7 +11,7 @@ def create_main_folder(project:utils.Project):
 
     # Verify the path and create it if it does not exist
     if not os.path.exists(project.output_dir):
-        utils.print_ongoing_task("The path doesn't exist, creating it ...")
+        utils.print_ongoing_task("The path doesn't exist, creating it")
         os.makedirs(project.output_dir)
         utils.print_task_done()
         utils.print_info("Path created : " + os.getcwd() + "/" + project.output_dir)
@@ -23,7 +23,7 @@ def create_main_folder(project:utils.Project):
     ########### Repository clonning ###########
     cmd_line = "git clone " + project.repo_url
 
-    print("Entering the folder and cloning the blank repository ... ", end="")
+    utils.print_ongoing_task("Entering the folder and cloning the blank repository")
     os.chdir(project.output_dir)
     try:
         subprocess.run(cmd_line, shell=True, check=True,
@@ -40,7 +40,7 @@ def create_main_folder(project:utils.Project):
     project.path = os.path.join(current_dir, project_name, "")
 
     ########### Main folder objects creation ###########
-    utils.print_ongoing_task("Entering the project and creating main folder objects ... ")
+    utils.print_ongoing_task("Entering the project and creating main folder objects")
     os.chdir(project.path)
     utils.create_folder_objects(project.layout, create_folder=False)
     utils.print_task_done()
