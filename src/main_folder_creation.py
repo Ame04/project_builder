@@ -40,7 +40,6 @@ def create_main_folder(project:utils.Project):
     project.path = os.path.join(current_dir, project_name, "")
 
     ########### Main folder objects creation ###########
-    utils.print_ongoing_task("Entering the project and creating main folder objects")
-    os.chdir(project.path)
-    utils.create_folder_objects(project.layout, create_folder=False)
+    utils.print_ongoing_task("Creating main folder objects")
+    utils.create_folder_objects(project.layout, project.path, create_folder=False)
     utils.print_task_done()

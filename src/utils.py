@@ -69,15 +69,19 @@ class Project():
 
 ########### Useful functions ###########
 # TODO add a recusive option
-def create_folder_objects(folder:dict, create_folder:bool=True):
-    ''' Takes a dict discribing a folder and creates the contained objects '''
+def create_folder_objects(folder:dict, path:str, create_folder:bool=True):
+    ''' Takes a dict discribing a folder and a path to where to create it
+    and creates the contained objects '''
     for item, content in folder.items():
+        item_place = os.path.join(path,item)
         if isinstance(content, dict) and create_folder:
             # Dict represent folders
-            os.makedirs(item)
+            os.makedirs(item_place)
+            # To fill folders, call recursively this function
+            create_folder_objects(folder[item], item_place, create_folder=True)
         elif isinstance(content, str):
             # Str represent files
-            with open(item, "w", encoding="utf-8") as new_f:
+            with open(item_place, "w", encoding="utf-8") as new_f:
                 new_f.write(content)
 
 def print_info(msg):
