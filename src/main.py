@@ -9,8 +9,10 @@ def get_parser() -> argparse.ArgumentParser:
     ''' Construct and return the paser object with all the options '''
     # Create an argument parser object
     parser = argparse.ArgumentParser(prog="Project builder",
-                                     description="Build a squeletton of a project"
+                                     description="Build a skeleton of a project"
                                                  " with the needed folders",
+                                     epilog="If interactive mode is set, all other option will be "
+                                            "ignored"
                                     )
 
     # Add arguments
@@ -18,19 +20,19 @@ def get_parser() -> argparse.ArgumentParser:
                         nargs="?",
                         help="The URL of you repository to clone from"
                         )
-    parser.add_argument("--interactive", "-i",
+    parser.add_argument("-i", "--interactive",
                         action="store_true",
                         help="To launch the scrypt in interactive mode"
                         )
-    parser.add_argument("--layout_path","-l",
+    parser.add_argument("-l", "--layout_path",
                         help="Path to your project layout,"
                         " if not set the default layout will be used"
     )
-    parser.add_argument("--output", "-o",
+    parser.add_argument("-o", "--output",
                         default="./",
                         help="The path where to put you new project"
                         )
-    parser.add_argument("--project_part", "-p",
+    parser.add_argument("-p", "--project_part",
                         nargs="*",
                         default=["meca", "elec", "code"],
                         help="The part you want to put in your project"
