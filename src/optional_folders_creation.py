@@ -8,7 +8,11 @@ def create_optional_folder(project:utils.Project):
 
     for folder in project.optionnal_folders:
         if project.is_interactive:
-            keep = input("Do you want to have the " + str(folder) + " folder ? ")
+            answer = input("Do you want to have the " + str(folder) + " folder ? (Y/n)")
+            if answer in ["no", "No", "n", "N", "NO"]:
+                keep = False
+            else:
+                keep = True
         else:
             keep = True if folder in project.parts else False
 

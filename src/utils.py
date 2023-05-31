@@ -28,11 +28,11 @@ class Project():
     def __init__(self, args):
         ''' Initialyse the class with info from the arg parser '''
         self.is_interactive = args.interactive
-        self.output_dir = args.output
         if args.project_part is not None:
             self.parts = args.project_part
 
         if not args.interactive:
+            self.output_dir = args.output
             if args.repo_url is None:
                 raise Exception("No repo_url, if not in interactive mode a repo_url is required")
             else:
@@ -44,6 +44,7 @@ class Project():
                 self.parse_layout(DEFAULT_LAYOUT_PATH)
 
         else:
+            self.output_dir = "./"
             layout_path = input("enter the path to your project layout file"
                                 " (if empty default will be taken): ")
             if layout_path == "":
@@ -68,7 +69,7 @@ class Project():
         self.optionnal_folders = tmp.copy()
 
 ########### Useful functions ###########
-# TODO add a recusive option
+
 def create_folder_objects(folder:dict, path:str, create_folder:bool=True):
     ''' Takes a dict discribing a folder and a path to where to create it
     and creates the contained objects '''

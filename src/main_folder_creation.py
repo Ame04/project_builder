@@ -7,7 +7,9 @@ import utils
 def create_main_folder(project:utils.Project):
     ''' Create the main folder and fill it '''
     if project.is_interactive:
-        project.output_dir = input("Enter the path where you want to create your project : ")
+        tmp = input("Enter the path where you want to create your project : ")
+        if tmp != "":
+            project.output_dir = tmp
 
     # Verify the path and create it if it does not exist
     if not os.path.exists(project.output_dir):

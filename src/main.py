@@ -38,17 +38,19 @@ def get_parser() -> argparse.ArgumentParser:
 
     return parser
 
-def main(args):
+def main():
     ''' The main part of the script '''
-
-if __name__=="__main__":
     # Parse the arguments
     parser = get_parser()
     args = parser.parse_args()
-    print("Let's have a project with : " + str(args.project_part))
     if args.interactive:
         print("Script launched in interactive mode")
+    else:
+        print("Let's have a project with : " + str(args.project_part))
     project = utils.Project(args=args)
     create_main_folder(project=project)
     create_optional_folder(project=project)
+
+if __name__=="__main__":
+    main()
 
