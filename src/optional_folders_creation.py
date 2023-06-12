@@ -18,7 +18,7 @@ def create_optional_folder(project:utils.Project):
 
         if keep:
             folder_place = os.path.join(project.path, folder)
-            utils.print_ongoing_task("Creating the folder : " + str(folder))
+            utils.print_ongoing_task("Creating the folder : " + str(folder_place))
             os.makedirs(folder_place)
             utils.print_task_done()
 

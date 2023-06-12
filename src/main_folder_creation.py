@@ -12,11 +12,14 @@ def create_main_folder(project:utils.Project):
             project.output_dir = tmp
 
     # Verify the path and create it if it does not exist
-    if not os.path.exists(project.output_dir):
+    path_existed = os.path.exists(project.output_dir)
+    if not path_existed:
         utils.print_ongoing_task("The path doesn't exist, creating it")
         os.makedirs(project.output_dir)
         utils.print_task_done()
         utils.print_info("Path created : " + os.getcwd() + "/" + project.output_dir)
+    else:
+        existing_folders = os.listdir(project.output_dir)
 
     if project.is_interactive:
         project.repo_url = input("Enter you repo URL : ")
@@ -36,10 +39,13 @@ def create_main_folder(project:utils.Project):
         exit(1)
 
     utils.print_task_done()
-    current_dir = os.getcwd()
-    project_name = os.listdir(current_dir)[0]
+    if not path_existed:
+        project_name = os.listdir(os.getcwd())[0]
+    else:
+        new_folder_ls = os.listdir(os.getcwd())
+        project_name = [folder for folder in new_folder_ls if folder not in existing_folders][0]
 
-    project.path = os.path.join(current_dir, project_name, "")
+    project.path = os.path.join(os.getcwd(), project_name, "")
 
     ########### Main folder objects creation ###########
     utils.print_ongoing_task("Creating main folder objects")
